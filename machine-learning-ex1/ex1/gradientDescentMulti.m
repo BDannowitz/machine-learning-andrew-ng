@@ -17,16 +17,21 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
-
-
-
-
-
-
-
-
-
-
+    params = length(theta);
+    theta_temp = zeros(params,1);
+    
+    for i = 1:params
+      sum = 0.0;
+      for j = 1:m
+        sum = sum + (X(j,:)*theta - y(j))*X(j,i);
+      endfor
+      theta_temp(i) = theta(i) - (alpha/m)*sum;
+    endfor
+      
+    for i = 1:params
+      theta(i) = theta_temp(i);
+    endfor
+    
     % ============================================================
 
     % Save the cost J in every iteration    
